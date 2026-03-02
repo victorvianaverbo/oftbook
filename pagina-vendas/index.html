@@ -494,6 +494,18 @@
             easing: 'ease-out-cubic'
         });
 
+        // Recalcular posições após o carregamento completo (fontes, estilos, etc)
+        window.addEventListener('load', () => {
+            AOS.refresh();
+        });
+
+        // Recalcular também ao redimensionar a janela
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => AOS.refresh(), 200);
+        });
+
         let parallaxScheduled = false;
         document.addEventListener('mousemove', (e) => {
             if (!parallaxScheduled) {
