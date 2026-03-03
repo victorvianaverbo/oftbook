@@ -17,12 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const heroObserver = new IntersectionObserver((entries) => {
             isHeroVisible = entries[0].isIntersecting;
         }, { threshold: 0 });
-        
+
         heroObserver.observe(heroSection);
 
         document.addEventListener('mousemove', (e) => {
             if (!isHeroVisible) return; // Ignore if hero is not visible
-            
+
             if (!parallaxScheduled) {
                 requestAnimationFrame(() => {
                     const parallaxEls = document.querySelectorAll('.parallax-layer');
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const calcObserver = new IntersectionObserver((entries) => {
             isCalcVisible = entries[0].isIntersecting;
         }, { threshold: 0 });
-        
+
         calcObserver.observe(calcWrapper);
 
         calcWrapper.addEventListener('mousemove', (e) => {
@@ -110,16 +110,28 @@ document.addEventListener('DOMContentLoaded', () => {
         // Init indicator
         const activeBtn = document.querySelector('.tab-btn.active');
         if (activeBtn) {
-            indicator.style.width = `${activeBtn.offsetWidth}px`;
-            indicator.style.transform = `translateX(${activeBtn.offsetLeft - 6}px)`; // -6 inner padding
+            const isVertical = window.innerWidth <= 768;
+            if (isVertical) {
+                indicator.style.width = 'calc(100% - 12px)';
+                indicator.style.transform = `translateY(${activeBtn.offsetTop - 6}px)`;
+            } else {
+                indicator.style.width = `${activeBtn.offsetWidth}px`;
+                indicator.style.transform = `translateX(${activeBtn.offsetLeft - 6}px)`;
+            }
         }
 
         // Adjust on resize
         window.addEventListener('resize', () => {
             const actBtn = document.querySelector('.tab-btn.active');
             if (actBtn) {
-                indicator.style.width = `${actBtn.offsetWidth}px`;
-                indicator.style.transform = `translateX(${actBtn.offsetLeft - 6}px)`;
+                const isVertical = window.innerWidth <= 768;
+                if (isVertical) {
+                    indicator.style.width = 'calc(100% - 12px)';
+                    indicator.style.transform = `translateY(${actBtn.offsetTop - 6}px)`;
+                } else {
+                    indicator.style.width = `${actBtn.offsetWidth}px`;
+                    indicator.style.transform = `translateX(${actBtn.offsetLeft - 6}px)`;
+                }
             }
         });
 
@@ -128,8 +140,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 tabBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
 
-                indicator.style.width = `${btn.offsetWidth}px`;
-                indicator.style.transform = `translateX(${btn.offsetLeft - 6}px)`;
+                const isVertical = window.innerWidth <= 768;
+
+                if (isVertical) {
+                    indicator.style.width = 'calc(100% - 12px)';
+                    indicator.style.transform = `translateY(${btn.offsetTop - 6}px)`;
+                } else {
+                    indicator.style.width = `${btn.offsetWidth}px`;
+                    indicator.style.transform = `translateX(${btn.offsetLeft - 6}px)`;
+                }
 
                 const targetId = btn.getAttribute('data-target');
                 tabPanes.forEach(pane => {

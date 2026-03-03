@@ -1463,8 +1463,11 @@ h4 {
     /* Hero */
     .hero.split-overlap {
         grid-template-columns: 1fr;
-        padding-top: 100px;
+        padding-top: 60px;
+        /* Reduzido de 100px */
         text-align: center;
+        min-height: auto;
+        /* Evita espaço vazio excessivo */
     }
 
     .pill-badge {
@@ -1472,7 +1475,9 @@ h4 {
     }
 
     .hero-content {
-        padding-bottom: 60px;
+        padding-top: 40px;
+        /* Reduzido de 100px */
+        padding-bottom: 40px;
         padding-right: 0;
         align-items: center;
     }
@@ -1517,6 +1522,17 @@ h4 {
 
     .pill-layout {
         grid-template-columns: 1fr;
+    }
+
+    /* Benefícios Grid */
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .benefits {
+        padding: 80px 24px;
+        /* Reduzido de 180px */
     }
 }
 
@@ -1568,7 +1584,8 @@ h4 {
 
     .tab-indicator {
         border-radius: 12px;
-        width: calc(100% - 12px) !important;
+        width: calc(100% - 12px);
         height: 48px;
+        transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
 }
