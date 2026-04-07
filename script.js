@@ -139,15 +139,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // =========================================================================
-    // HERO — Mouse Parallax on mockup
+    // HERO — Mouse Parallax on mockup (cached DOM, pauses off-screen)
     // =========================================================================
     const heroSection = document.querySelector('.hero');
+    const parallaxEls = document.querySelectorAll('.parallax-layer'); // cached
     let parallaxScheduled = false;
     let isHeroVisible = true;
 
-    if (heroSection) {
+    if (heroSection && parallaxEls.length > 0) {
         const heroObserver = new IntersectionObserver((entries) => {
             isHeroVisible = entries[0].isIntersecting;
+            // Pause/resume float animation when off-screen
+            const mockup = document.querySelector('.mockup-container');
+            if (mockup) mockup.style.animationPlayState = isHeroVisible ? 'running' : 'paused';
         }, { threshold: 0 });
 
         heroObserver.observe(heroSection);
@@ -156,7 +160,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!isHeroVisible) return;
             if (!parallaxScheduled) {
                 requestAnimationFrame(() => {
-                    const parallaxEls = document.querySelectorAll('.parallax-layer');
                     const x = (e.clientX / window.innerWidth - 0.5) * 12;
                     const y = (e.clientY / window.innerHeight - 0.5) * 12;
                     parallaxEls.forEach(el => {
@@ -321,5 +324,44 @@ document.addEventListener('DOMContentLoaded', () => {
         const statsContainer = document.querySelector('.testimonial-stats');
         if (statsContainer) statsObserver.observe(statsContainer);
     }
+
+    // =========================================================================
+    // PAUSE INFINITE ANIMATIONS OFF-SCREEN (save GPU/battery)
+    // =========================================================================
+    const animatedSections = [
+        { selector: '.section-calculators-spotlight', targets: '.marquee-content' },
+        { selector: '.section-lens-ai', targets: '.lens-mockup' },
+        { selector: '.section-cta-final', targets: '.section-cta-final::before' }
+    ];
+
+    animatedSections.forEach(({ selector, targets }) => {
+        const section = document.querySelector(selector);
+        if (!section) return;
+
+        const observer = new IntersectionObserver((entries) => {
+            const paused = !entries[0].isIntersecting;
+            // Pause all animated children
+            section.querySelectorAll('[style*="animation"], .marquee-content, .lens-mockup').forEach(el => {
+                el.style.animationPlayState = paused ? 'paused' : 'running';
+            });
+            // For CTA breathe pseudo-element, toggle class
+            if (selector === '.section-cta-final') {
+                section.style.setProperty('--breathe-state', paused ? 'paused' : 'running');
+            }
+        }, { threshold: 0 });
+
+        observer.observe(section);
+    });
+
+    // =========================================================================
+    // PAUSE CAROUSEL ON TAB INACTIVE (save battery)
+    // =========================================================================
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            if (autoPlaying) clearInterval(autoPlayInterval);
+        } else {
+            if (autoPlaying) startAutoPlay();
+        }
+    });
 
 });
