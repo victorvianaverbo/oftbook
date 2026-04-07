@@ -326,32 +326,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =========================================================================
-    // PAUSE INFINITE ANIMATIONS OFF-SCREEN (save GPU/battery)
+    // PAUSE CAROUSEL ON TAB INACTIVE (save battery)
     // =========================================================================
-    const animatedSections = [
-        { selector: '.section-calculators-spotlight', targets: '.marquee-content' },
-        { selector: '.section-lens-ai', targets: '.lens-mockup' },
-        { selector: '.section-cta-final', targets: '.section-cta-final::before' }
-    ];
-
-    animatedSections.forEach(({ selector, targets }) => {
-        const section = document.querySelector(selector);
-        if (!section) return;
-
-        const observer = new IntersectionObserver((entries) => {
-            const paused = !entries[0].isIntersecting;
-            // Pause all animated children
-            section.querySelectorAll('[style*="animation"], .marquee-content, .lens-mockup').forEach(el => {
-                el.style.animationPlayState = paused ? 'paused' : 'running';
-            });
-            // For CTA breathe pseudo-element, toggle class
-            if (selector === '.section-cta-final') {
-                section.style.setProperty('--breathe-state', paused ? 'paused' : 'running');
-            }
-        }, { threshold: 0 });
-
-        observer.observe(section);
-    });
 
     // =========================================================================
     // PAUSE CAROUSEL ON TAB INACTIVE (save battery)

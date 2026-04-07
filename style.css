@@ -864,7 +864,6 @@ h2 { font-size: clamp(2.2rem, 4vw, 3.5rem); }
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    animation: float 7s ease-in-out infinite;
 }
 
 .lens-mockup .app-header {
@@ -920,7 +919,7 @@ h2 { font-size: clamp(2.2rem, 4vw, 3.5rem); }
 .marquee-content {
     display: flex;
     width: max-content;
-    animation: marquee-scroll 40s linear infinite;
+    animation: marquee-scroll 60s linear infinite;
 }
 
 .reverse-scroll { animation-direction: reverse; }
@@ -1528,7 +1527,6 @@ h2 { font-size: clamp(2.2rem, 4vw, 3.5rem); }
     filter: blur(50px);
     z-index: 0;
     animation: breathe 4s ease-in-out infinite;
-    animation-play-state: var(--breathe-state, running);
 }
 
 @keyframes breathe {
