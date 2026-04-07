@@ -355,8 +355,6 @@ h2 { font-size: clamp(2.2rem, 4vw, 3.5rem); }
     width: 100%;
     max-width: 480px;
     z-index: 1;
-    animation: float 6s ease-in-out infinite;
-    will-change: transform;
 }
 
 @keyframes float {
