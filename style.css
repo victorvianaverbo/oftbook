@@ -910,21 +910,21 @@ h2 { font-size: clamp(2.2rem, 4vw, 3.5rem); }
     justify-content: center;
 }
 
-/* Marquee — wrapper anima, conteúdo é estático */
+/* Marquee */
 .marquee-track {
     overflow: hidden;
     padding: 16px 0;
     pointer-events: none;
 }
 
-.marquee-track > .marquee-inner {
+.marquee-inner {
     display: flex;
     width: max-content;
-    animation: marquee-slide 45s linear infinite;
+    animation: marquee-left 80s linear infinite;
 }
 
-.marquee-reverse > .marquee-inner {
-    animation-direction: reverse;
+.marquee-reverse .marquee-inner {
+    animation-name: marquee-right;
 }
 
 .marquee-inner span {
@@ -943,9 +943,14 @@ h2 { font-size: clamp(2.2rem, 4vw, 3.5rem); }
     padding: 0 4px !important;
 }
 
-@keyframes marquee-slide {
+@keyframes marquee-left {
     0%   { transform: translateX(0); }
     100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+    0%   { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
 }
 
 .calc-container {
