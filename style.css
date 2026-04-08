@@ -910,29 +910,29 @@ h2 { font-size: clamp(2.2rem, 4vw, 3.5rem); }
     justify-content: center;
 }
 
+/* Marquee — técnica de loop infinito com 2 cópias */
 .marquee-track {
-    width: 100%;
+    display: flex;
     overflow: hidden;
     padding: 16px 0;
     pointer-events: none;
+    gap: 40px;
 }
 
 .marquee-content {
     display: flex;
-    width: max-content;
-    animation: marquee-scroll 120s linear infinite;
-}
-
-.reverse-scroll { animation-direction: reverse; }
-
-.marquee-group {
-    display: flex;
     align-items: center;
-    gap: 20px;
-    padding-right: 20px;
+    gap: 40px;
+    flex-shrink: 0;
+    min-width: 100%;
+    animation: marquee-scroll 30s linear infinite;
 }
 
-.marquee-group span:not(.marquee-dot) {
+.marquee-reverse .marquee-content {
+    animation-direction: reverse;
+}
+
+.marquee-content span {
     font-family: var(--font-heading);
     font-size: 1.5rem;
     color: rgba(255,255,255,0.35);
@@ -947,8 +947,7 @@ h2 { font-size: clamp(2.2rem, 4vw, 3.5rem); }
 }
 
 @keyframes marquee-scroll {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
+    to { transform: translateX(calc(-100% - 40px)); }
 }
 
 .calc-container {
