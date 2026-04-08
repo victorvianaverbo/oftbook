@@ -910,44 +910,42 @@ h2 { font-size: clamp(2.2rem, 4vw, 3.5rem); }
     justify-content: center;
 }
 
-/* Marquee — técnica de loop infinito com 2 cópias */
+/* Marquee — wrapper anima, conteúdo é estático */
 .marquee-track {
-    display: flex;
     overflow: hidden;
     padding: 16px 0;
     pointer-events: none;
-    gap: 40px;
 }
 
-.marquee-content {
+.marquee-track > .marquee-inner {
     display: flex;
-    align-items: center;
-    gap: 40px;
-    flex-shrink: 0;
-    min-width: 100%;
-    animation: marquee-scroll 30s linear infinite;
+    width: max-content;
+    animation: marquee-slide 45s linear infinite;
 }
 
-.marquee-reverse .marquee-content {
+.marquee-reverse > .marquee-inner {
     animation-direction: reverse;
 }
 
-.marquee-content span {
+.marquee-inner span {
     font-family: var(--font-heading);
     font-size: 1.5rem;
     color: rgba(255,255,255,0.35);
     letter-spacing: 0.05em;
     white-space: nowrap;
+    padding: 0 20px;
 }
 
 .marquee-dot {
     color: var(--accent-primary);
     font-size: 1.2rem;
     opacity: 0.5;
+    padding: 0 4px !important;
 }
 
-@keyframes marquee-scroll {
-    to { transform: translateX(calc(-100% - 40px)); }
+@keyframes marquee-slide {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
 .calc-container {
