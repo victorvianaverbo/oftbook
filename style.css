@@ -480,27 +480,28 @@ h2 { font-size: clamp(2.2rem, 4vw, 3.5rem); }
 
 .phone-frame {
     position: relative;
-    background: #1a1a1a;
-    border-radius: 44px;
-    padding: 12px;
-    box-shadow: var(--shadow-lg), inset 0 0 0 2px rgba(255,255,255,0.08);
+    background: #0a0a0a;
+    border-radius: 48px;
+    padding: 10px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.15), inset 0 0 0 1.5px rgba(255,255,255,0.1);
 }
 
-.phone-notch {
+.phone-island {
     position: absolute;
-    top: 12px; left: 50%;
+    top: 16px; left: 50%;
     transform: translateX(-50%);
-    width: 110px; height: 26px;
-    background: #1a1a1a;
-    border-radius: 0 0 16px 16px;
+    width: 90px; height: 24px;
+    background: #0a0a0a;
+    border-radius: 100px;
     z-index: 3;
 }
 
 .phone-screen {
     position: relative;
-    border-radius: 34px;
+    border-radius: 40px;
     overflow: hidden;
     background: #fff;
+    aspect-ratio: 9 / 19.5;
 }
 
 .phone-screen .carousel-track {
@@ -516,7 +517,9 @@ h2 { font-size: clamp(2.2rem, 4vw, 3.5rem); }
 
 .phone-screen .carousel-slide img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
     display: block;
 }
 
