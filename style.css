@@ -230,20 +230,20 @@ h2 { font-size: clamp(2.2rem, 4vw, 3.5rem); }
 }
 
 /* Language Switcher */
-.hero-logo-area {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-}
-
 .lang-switcher {
+    position: fixed;
+    top: 20px;
+    right: 24px;
+    z-index: 100;
     display: flex;
     gap: 4px;
-    background: rgba(15,10,73,0.04);
+    background: rgba(255,251,247,0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     padding: 3px;
     border-radius: 8px;
-    border: 1px solid rgba(15,10,73,0.06);
+    border: 1px solid rgba(15,10,73,0.08);
+    box-shadow: 0 2px 12px rgba(15,10,73,0.06);
 }
 
 .lang-btn {
