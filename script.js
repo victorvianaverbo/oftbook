@@ -410,4 +410,172 @@ document.addEventListener('DOMContentLoaded', () => {
         setLanguage(currentLang);
     }
 
+    // ========================================================================
+    // LEAD MODAL — captura de dados antes de redirecionar pra App Store
+    // ========================================================================
+    (function initLeadModal() {
+        const SUPABASE_URL = 'https://jxalejcplyxciyqlfcfo.supabase.co';
+        const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp4YWxlamNwbHl4Y2l5cWxmY2ZvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY0NDQ3MTIsImV4cCI6MjA5MjAyMDcxMn0.NVe-WcFBCPv8KCDsSUm5masH5SgczwphX_Z0mLMjTkk';
+        const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+        const UTM_STORAGE_KEY = 'oftbook_utm';
+
+        const modal = document.getElementById('leadModal');
+        const form = document.getElementById('leadForm');
+        const submitBtn = document.getElementById('leadSubmit');
+        if (!modal || !form) return;
+
+        let pendingUrl = null;
+        let pendingSource = null;
+
+        // ------ Captura de UTMs (persiste na sessão) ------
+        function captureUTMs() {
+            const url = new URL(window.location.href);
+            const stored = JSON.parse(sessionStorage.getItem(UTM_STORAGE_KEY) || '{}');
+            let updated = false;
+            UTM_KEYS.forEach(k => {
+                const v = url.searchParams.get(k);
+                if (v) { stored[k] = v; updated = true; }
+            });
+            if (updated) sessionStorage.setItem(UTM_STORAGE_KEY, JSON.stringify(stored));
+            return stored;
+        }
+
+        function getUTMs() {
+            return JSON.parse(sessionStorage.getItem(UTM_STORAGE_KEY) || '{}');
+        }
+
+        // ------ Cookies do Meta (fbp / fbc) ------
+        function getCookie(name) {
+            const match = document.cookie.match(new RegExp('(^|;\\s*)' + name + '=([^;]*)'));
+            return match ? decodeURIComponent(match[2]) : null;
+        }
+
+        // ------ Formata telefone BR ------
+        const phoneInput = document.getElementById('leadTelefone');
+        if (phoneInput) {
+            phoneInput.addEventListener('input', (e) => {
+                let v = e.target.value.replace(/\D/g, '').slice(0, 11);
+                if (v.length > 6) {
+                    v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+                } else if (v.length > 2) {
+                    v = `(${v.slice(0,2)}) ${v.slice(2)}`;
+                } else if (v.length > 0) {
+                    v = `(${v}`;
+                }
+                e.target.value = v;
+            });
+        }
+
+        // ------ Abre modal ------
+        function openModal(url, source) {
+            pendingUrl = url;
+            pendingSource = source;
+            modal.hidden = false;
+            requestAnimationFrame(() => modal.classList.add('is-open'));
+            document.body.classList.add('modal-open');
+            setTimeout(() => document.getElementById('leadNome')?.focus(), 300);
+        }
+
+        function closeModal() {
+            modal.classList.remove('is-open');
+            document.body.classList.remove('modal-open');
+            setTimeout(() => { modal.hidden = true; }, 250);
+        }
+
+        // ------ Intercepta CTAs ------
+        document.querySelectorAll('[data-download-trigger]').forEach(el => {
+            el.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal(el.getAttribute('href'), el.dataset.ctaSource || 'unknown');
+            });
+        });
+
+        // ------ Fechar modal ------
+        modal.querySelectorAll('[data-close-modal]').forEach(el => {
+            el.addEventListener('click', closeModal);
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.hidden) closeModal();
+        });
+
+        // ------ Submit ------
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (!form.checkValidity()) { form.reportValidity(); return; }
+
+            const labelEl = submitBtn.querySelector('.lead-modal__submit-label');
+            const loadingEl = submitBtn.querySelector('.lead-modal__submit-loading');
+            submitBtn.disabled = true;
+            if (labelEl) labelEl.hidden = true;
+            if (loadingEl) loadingEl.hidden = false;
+
+            const eventId = 'lead_' + Date.now() + '_' + Math.random().toString(36).slice(2, 10);
+            const utms = getUTMs();
+            const payload = {
+                nome: form.nome.value.trim(),
+                email: form.email.value.trim().toLowerCase(),
+                telefone: form.telefone.value.trim(),
+                cta_source: pendingSource,
+                page_url: window.location.href,
+                referrer: document.referrer || null,
+                utm_source: utms.utm_source || null,
+                utm_medium: utms.utm_medium || null,
+                utm_campaign: utms.utm_campaign || null,
+                utm_term: utms.utm_term || null,
+                utm_content: utms.utm_content || null,
+                event_id: eventId,
+                fbc: getCookie('_fbc'),
+                fbp: getCookie('_fbp'),
+                user_agent: navigator.userAgent
+            };
+
+            // 1) Grava no Supabase
+            try {
+                await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
+                    method: 'POST',
+                    headers: {
+                        'apikey': SUPABASE_ANON,
+                        'Authorization': `Bearer ${SUPABASE_ANON}`,
+                        'Content-Type': 'application/json',
+                        'Prefer': 'return=minimal'
+                    },
+                    body: JSON.stringify(payload)
+                });
+            } catch (err) { console.warn('[lead] Supabase falhou:', err); }
+
+            // 2) Meta Pixel (browser-side) - com eventID pra dedup com CAPI
+            try {
+                if (typeof fbq === 'function') {
+                    fbq('track', 'Lead', {
+                        content_name: 'Download App',
+                        content_category: pendingSource
+                    }, { eventID: eventId });
+                }
+            } catch (err) { console.warn('[lead] Pixel falhou:', err); }
+
+            // 3) Netlify Function CAPI (server-side)
+            try {
+                fetch('/.netlify/functions/capi', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload),
+                    keepalive: true
+                }).catch(() => {});
+            } catch (err) { console.warn('[lead] CAPI falhou:', err); }
+
+            // 4) Redireciona pra App Store (pequeno delay pra garantir envio)
+            setTimeout(() => {
+                if (pendingUrl) window.open(pendingUrl, '_blank', 'noopener');
+                closeModal();
+                form.reset();
+                submitBtn.disabled = false;
+                if (labelEl) labelEl.hidden = false;
+                if (loadingEl) loadingEl.hidden = true;
+            }, 350);
+        });
+
+        // Captura UTMs assim que carrega
+        captureUTMs();
+    })();
+
 });
