@@ -15,14 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // CAROUSEL — Split layout with iPhone mockup
     // =========================================================================
     const slideData = [
-        { title: 'Página Inicial', subtitle: 'Tudo ao Alcance dos Seus Dedos', desc: 'Acesse rapidamente a Lens AI, perguntas rápidas, condutas e todas as ferramentas do Oftbook direto da tela inicial. Interface intuitiva pensada para o dia a dia do oftalmologista.' },
-        { title: 'Inteligência Artificial', subtitle: 'Lens AI — IA Especializada em Oftalmologia', desc: 'Faça perguntas clínicas complexas e receba respostas detalhadas com protocolos de tratamento, posologias e referências bibliográficas. Treinada exclusivamente com literatura oftalmológica.' },
-        { title: 'Calculadoras Clínicas', subtitle: '8+ Calculadoras Especializadas', desc: 'Glaucoma OHTS, Acuidade Visual, PIO/Lasik, Hidroxicloroquina, PIO/Paquimetria, Trauma Ocular, Ishihara e Equiascopia. Resultados precisos com faixas de referência integradas.' },
-        { title: 'Condutas Clínicas', subtitle: '300+ Protocolos Atualizados', desc: 'Condutas completas com manejo inicial, investigação diagnóstica e tratamento farmacológico. Organizadas por especialidade para acesso rápido no plantão ou consultório.' },
-        { title: 'Tratamento Detalhado', subtitle: 'Protocolos Farmacológicos Completos', desc: 'Cada conduta inclui tratamento farmacológico detalhado com doses, frequências, critérios de gravidade e orientações de manejo.' },
+        { title: 'Lens AI', subtitle: 'Tire Sua Dúvida em Segundos', desc: 'Acesse a Lens AI, perguntas rápidas, condutas e todas as ferramentas do Oftbook direto da tela inicial. Interface intuitiva pensada para o dia a dia do oftalmologista.' },
         { title: 'Ferramentas', subtitle: 'Tudo em Um Só Lugar', desc: 'Condutas, Angiografia Fluoresceínica, Lentes de Contato, Bulário, Guia Cirúrgico, Videoaulas e Guias especializados de Retinopatia Diabética e Edema Macular Diabético.' },
-        { title: 'Códigos e Classificações', subtitle: 'CID-10, CID-11 e Classificações', desc: 'Acesso rápido a todos os códigos e classificações oftalmológicas organizados de forma prática. Busca inteligente para encontrar o código certo em segundos.' },
-        { title: 'Atlas de Imagens', subtitle: 'Referência Visual Clínica', desc: 'Imagens clínicas detalhadas organizadas por patologia para apoio diagnóstico. Visualize achados oftalmológicos reais com descrições e classificações integradas.' }
+        { title: 'Condutas Clínicas', subtitle: '300+ Protocolos Atualizados', desc: 'Condutas completas com manejo inicial, investigação diagnóstica e tratamento farmacológico. Organizadas por especialidade para acesso rápido no consultório.' },
+        { title: 'Tratamento Detalhado', subtitle: 'Protocolos Farmacológicos Completos', desc: 'Cada conduta inclui tratamento farmacológico detalhado com doses, frequências, critérios de gravidade e orientações de manejo.' },
+        { title: 'Atlas de Imagens', subtitle: 'Referência Visual Clínica', desc: 'Imagens clínicas detalhadas organizadas por patologia para apoio diagnóstico. Visualize achados oftalmológicos reais com descrições e classificações integradas.' },
+        { title: 'Chat Inteligente', subtitle: 'Lens AI — IA Especializada em Oftalmologia', desc: 'Faça perguntas clínicas complexas e receba respostas detalhadas com protocolos de tratamento, posologias e referências bibliográficas. Treinada exclusivamente com literatura oftalmológica.' },
+        { title: 'Calculadoras Clínicas', subtitle: '8+ Calculadoras Especializadas', desc: 'Glaucoma OHTS, Acuidade Visual, PIO/Lasik, Hidroxicloroquina, PIO/Paquimetria, Trauma Ocular, Ishihara e Equiascopia. Resultados precisos com faixas de referência integradas.' },
+        { title: 'Códigos e Classificações', subtitle: 'CID-10, CID-11 e Classificações', desc: 'Acesso rápido a todos os códigos e classificações oftalmológicas organizados de forma prática. Busca inteligente para encontrar o código certo em segundos.' }
     ];
 
     const carouselTrack = document.getElementById('carousel-track');
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
         startAutoPlay();
 
         // Touch swipe on phone screen
-        const phoneScreen = document.querySelector('.phone-screen');
+        const phoneScreen = document.querySelector('.phone-mockup');
         if (phoneScreen) {
             let touchStartX = 0;
             phoneScreen.addEventListener('touchstart', (e) => {

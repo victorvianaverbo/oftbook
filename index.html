@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- Fonts: Fraunces (Anthropic Serif) + Geist (Antigravity Tech) -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Geist:wght@400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,700;9..144,800&family=Geist:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -24,8 +24,11 @@
         <!-- HERO -->
         <section class="hero split-overlap">
             <div class="hero-content">
+                <div class="hero-logo-area" style="margin-bottom:24px;">
+                    <img src="oftbook df.png" alt="OftBook" style="height:40px;width:auto;">
+                </div>
                 <div class="hero-badge-group">
-                    <div class="pill-badge">Inteligência Artificial Médica</div>
+                    <div class="pill-badge">Inteligência Artificial Oftalmológica</div>
                 </div>
 
                 <h1 class="hero-title">
@@ -81,7 +84,7 @@
                                     <svg viewBox="0 0 24 24" fill="none" class="mock-logo">
                                         <path
                                             d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
-                                            fill="#F97316" />
+                                            fill="#FF6606" />
                                     </svg>
                                 </div>
                                 <span>Lens AI Engine</span>
@@ -115,20 +118,15 @@
                 <div class="carousel-split" data-aos="fade-up" data-aos-delay="200">
                     <!-- LEFT: iPhone Mockup -->
                     <div class="phone-mockup">
-                        <div class="phone-frame">
-                            <div class="phone-island"></div>
-                            <div class="phone-screen">
-                                <div class="carousel-track" id="carousel-track">
-                                    <div class="carousel-slide"><img src="oftbook-pagina-inicial_8a1683c4.webp" alt="Oftbook - Página Inicial" width="390" height="844" loading="lazy"></div>
-                                    <div class="carousel-slide"><img src="oftbook-ia_3f5203a4.webp" alt="Oftbook - Lens AI" width="390" height="844" loading="lazy"></div>
-                                    <div class="carousel-slide"><img src="oftbook-calculadoras_709f32af.webp" alt="Oftbook - Calculadoras" width="390" height="844" loading="lazy"></div>
-                                    <div class="carousel-slide"><img src="oftbook-conduta1_5efc9139.webp" alt="Oftbook - Condutas" width="390" height="844" loading="lazy"></div>
-                                    <div class="carousel-slide"><img src="oftbook-conduta2_2c78a2a7.webp" alt="Oftbook - Conduta Detalhada" width="390" height="844" loading="lazy"></div>
-                                    <div class="carousel-slide"><img src="oftbook-ferramentas_c2fa5a76.webp" alt="Oftbook - Ferramentas" width="390" height="844" loading="lazy"></div>
-                                    <div class="carousel-slide"><img src="oftbook-codigos_ff91e166.webp" alt="Oftbook - Códigos CID" width="390" height="844" loading="lazy"></div>
-                                    <div class="carousel-slide"><img src="oftbook-atlas_e7394381.webp" alt="Oftbook - Atlas" width="390" height="844" loading="lazy"></div>
-                                </div>
-                            </div>
+                        <div class="carousel-track" id="carousel-track">
+                            <div class="carousel-slide"><img src="oftbook-mockup-01-lens-ai.png" alt="Oftbook - Lens AI" loading="lazy"></div>
+                            <div class="carousel-slide"><img src="oftbook-mockup-02-ferramentas.png" alt="Oftbook - Ferramentas" loading="lazy"></div>
+                            <div class="carousel-slide"><img src="oftbook-mockup-03-condutas.png" alt="Oftbook - Condutas" loading="lazy"></div>
+                            <div class="carousel-slide"><img src="oftbook-mockup-04-tratamento.png" alt="Oftbook - Tratamento" loading="lazy"></div>
+                            <div class="carousel-slide"><img src="oftbook-mockup-05-atlas.png" alt="Oftbook - Atlas" loading="lazy"></div>
+                            <div class="carousel-slide"><img src="oftbook-mockup-06-chat.png" alt="Oftbook - Chat" loading="lazy"></div>
+                            <div class="carousel-slide"><img src="oftbook-mockup-07-calculadoras.png" alt="Oftbook - Calculadoras" loading="lazy"></div>
+                            <div class="carousel-slide"><img src="oftbook-mockup-08-codigos.png" alt="Oftbook - Códigos" loading="lazy"></div>
                         </div>
                     </div>
 
@@ -139,9 +137,9 @@
                             <div class="counter-line"></div>
                         </div>
 
-                        <h3 class="slide-title" id="slide-title">Página Inicial</h3>
-                        <span class="slide-subtitle" id="slide-subtitle">Tudo ao Alcance dos Seus Dedos</span>
-                        <p class="slide-desc" id="slide-desc">Acesse rapidamente a Lens AI, perguntas rápidas, condutas e todas as ferramentas do Oftbook direto da tela inicial. Interface intuitiva pensada para o dia a dia do oftalmologista.</p>
+                        <h3 class="slide-title" id="slide-title">Lens AI</h3>
+                        <span class="slide-subtitle" id="slide-subtitle">Tire Sua Dúvida em Segundos</span>
+                        <p class="slide-desc" id="slide-desc">Acesse a Lens AI, perguntas rápidas, condutas e todas as ferramentas do Oftbook direto da tela inicial. Interface intuitiva pensada para o dia a dia do oftalmologista.</p>
 
                         <div class="carousel-nav-row">
                             <button class="carousel-btn carousel-prev" aria-label="Anterior">
@@ -181,7 +179,7 @@
                     <!-- Card 1: Calculadoras (1x1) -->
                     <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
                         <div class="feature-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.5">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF6606" stroke-width="1.5">
                                 <rect x="4" y="4" width="16" height="16" rx="2"/>
                                 <path d="M8 12h8M12 8v8"/>
                             </svg>
@@ -193,7 +191,7 @@
                     <!-- Card 2: Condutas (1x1) -->
                     <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
                         <div class="feature-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.5">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF6606" stroke-width="1.5">
                                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                                 <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>
                             </svg>
@@ -205,7 +203,7 @@
                     <!-- Card 3: Lens AI (1x2 tall — destaque) -->
                     <div class="feature-card feature-card--tall feature-card--highlight" data-aos="fade-up" data-aos-delay="300">
                         <div class="feature-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.5">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF6606" stroke-width="1.5">
                                 <circle cx="12" cy="12" r="10"/>
                                 <path d="M12 6v6l4 2"/>
                             </svg>
@@ -218,7 +216,7 @@
                     <!-- Card 4: Segurança (2x1 wide) -->
                     <div class="feature-card feature-card--wide" data-aos="fade-up" data-aos-delay="400">
                         <div class="feature-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.5">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF6606" stroke-width="1.5">
                                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                                 <path d="M9 12l2 2 4-4"/>
                             </svg>
@@ -283,7 +281,7 @@
                                 <svg viewBox="0 0 24 24" fill="none" class="mock-logo">
                                     <path
                                         d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
-                                        fill="#F97316" />
+                                        fill="#FF6606" />
                                 </svg>
                             </div>
                             <span>Lens AI Engine</span>
@@ -359,8 +357,8 @@
         <section class="section-tabs-interactive" id="condutas">
             <div class="container tabs-container">
                 <div class="section-header center-align" data-aos="fade-up">
-                    <h2 class="section-title">Segurança Para o Seu Plantão</h2>
-                    <p class="section-desc">Mais de 300 condutas clínicas atualizadas para acesso rápido na urgência.
+                    <h2 class="section-title">Segurança Para o Seu Atendimento</h2>
+                    <p class="section-desc">Mais de 300 condutas clínicas atualizadas para acesso rápido no consultório.
                         Bulário completo com posologias, indicações e contraindicações filtrado por categorias
                         terapêuticas.</p>
                 </div>
@@ -476,7 +474,7 @@
                         <div class="testimonial-stars">
                             <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
                         </div>
-                        <p class="testimonial-quote">"Como residente, o Oftbook é essencial. As calculadoras clínicas e o Lens AI me ajudam a tomar decisões mais rápidas e seguras durante o plantão."</p>
+                        <p class="testimonial-quote">"Como residente, o Oftbook é essencial. As calculadoras clínicas e o Lens AI me ajudam a tomar decisões mais rápidas e seguras durante o atendimento."</p>
                         <div class="testimonial-author">
                             <div class="author-avatar">AS</div>
                             <div class="author-info">
@@ -703,7 +701,7 @@
     <footer class="site-footer">
         <div class="container footer-grid">
             <div class="footer-brand">
-                <div class="footer-logo"><strong>Oftbook</strong></div>
+                <div class="footer-logo"><img src="oftbook df.png" alt="OftBook" style="height:32px;width:auto;"></div>
                 <p class="footer-tagline">A inteligência artificial especializada em oftalmologia para decisões clínicas mais rápidas e seguras.</p>
             </div>
             <div class="footer-contact">
