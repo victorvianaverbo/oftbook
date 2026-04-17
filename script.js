@@ -414,8 +414,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // LEAD MODAL — captura de dados antes de redirecionar pra App Store
     // ========================================================================
     (function initLeadModal() {
-        const SUPABASE_URL = 'https://jxalejcplyxciyqlfcfo.supabase.co';
-        const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp4YWxlamNwbHl4Y2l5cWxmY2ZvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY0NDQ3MTIsImV4cCI6MjA5MjAyMDcxMn0.NVe-WcFBCPv8KCDsSUm5masH5SgczwphX_Z0mLMjTkk';
+        const SAVE_LEAD_ENDPOINT = '/.netlify/functions/save-lead';
         const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
         const UTM_STORAGE_KEY = 'oftbook_utm';
 
@@ -529,21 +528,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 user_agent: navigator.userAgent
             };
 
-            // 1) Grava no Supabase
-            try {
-                await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
-                    method: 'POST',
-                    headers: {
-                        'apikey': SUPABASE_ANON,
-                        'Authorization': `Bearer ${SUPABASE_ANON}`,
-                        'Content-Type': 'application/json',
-                        'Prefer': 'return=minimal'
-                    },
-                    body: JSON.stringify(payload)
-                });
-            } catch (err) { console.warn('[lead] Supabase falhou:', err); }
-
-            // 2) Meta Pixel (browser-side) - com eventID pra dedup com CAPI
+            // 1) Meta Pixel browser-side (com eventID pra dedup com CAPI)
             try {
                 if (typeof fbq === 'function') {
                     fbq('track', 'Lead', {
@@ -553,15 +538,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             } catch (err) { console.warn('[lead] Pixel falhou:', err); }
 
-            // 3) Netlify Function CAPI (server-side)
+            // 2) Backend: grava no Supabase + envia Meta CAPI (server-side)
             try {
-                fetch('/.netlify/functions/capi', {
+                fetch(SAVE_LEAD_ENDPOINT, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload),
                     keepalive: true
                 }).catch(() => {});
-            } catch (err) { console.warn('[lead] CAPI falhou:', err); }
+            } catch (err) { console.warn('[lead] save-lead falhou:', err); }
 
             // 4) Redireciona pra App Store (pequeno delay pra garantir envio)
             setTimeout(() => {
