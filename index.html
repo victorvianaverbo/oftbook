@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
-    <script src="script.js" defer></script>
+    <script src="script.js?v=2" defer></script>
     <!-- v1.0.1-deploy-fix -->
 </head>
 
@@ -26,43 +26,48 @@
             <div class="hero-content">
                 <div class="hero-logo-area" style="margin-bottom:24px;">
                     <img src="oftbook df.png" alt="OftBook" style="height:40px;width:auto;">
+                    <div class="lang-switcher">
+                        <button class="lang-btn active" data-lang="pt">PT</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="es">ES</button>
+                    </div>
                 </div>
                 <div class="hero-badge-group">
-                    <div class="pill-badge">Inteligência Artificial Oftalmológica</div>
+                    <div class="pill-badge" data-i18n="hero.badge">Inteligência Artificial Oftalmológica</div>
                 </div>
 
                 <h1 class="hero-title">
-                    <span class="editorial-text">A Inteligência Artificial que Revoluciona</span>
-                    <span class="gradient-tech">a Prática Oftalmológica.</span>
+                    <span class="editorial-text" data-i18n="hero.title1">A Inteligência Artificial que Revoluciona</span>
+                    <span class="gradient-tech" data-i18n="hero.title2">a Prática Oftalmológica.</span>
                 </h1>
 
-                <p class="hero-subtitle">
+                <p class="hero-subtitle" data-i18n="hero.subtitle">
                     Tome decisões clínicas mais rápidas e seguras com calculadoras especializadas, condutas embasadas em
                     evidências e uma IA treinada em literatura médica oficial.
                 </p>
 
                 <div class="hero-actions">
                     <a href="https://apps.apple.com/br/app/oftbook/id6759061221" class="btn btn-primary magnetic-btn" target="_blank" rel="noopener">
-                        <span>Começar Agora</span>
+                        <span data-i18n="hero.cta_primary">Começar Agora</span>
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
                         </svg>
                     </a>
-                    <a href="#funcionalidades-cards" class="btn btn-secondary magnetic-btn">Ver Funcionalidades</a>
+                    <a href="#funcionalidades-cards" class="btn btn-secondary magnetic-btn" data-i18n="hero.cta_secondary">Ver Funcionalidades</a>
                 </div>
 
                 <div class="hero-metrics">
                     <div class="metric">
-                        <strong>8+</strong>
-                        <span>Calculadoras Clínicas</span>
+                        <strong data-i18n="hero.metric1_value">8+</strong>
+                        <span data-i18n="hero.metric1_label">Calculadoras Clínicas</span>
                     </div>
                     <div class="metric">
-                        <strong>300+</strong>
-                        <span>Condutas Médicas</span>
+                        <strong data-i18n="hero.metric2_value">300+</strong>
+                        <span data-i18n="hero.metric2_label">Condutas Médicas</span>
                     </div>
                     <div class="metric">
-                        <strong>10x</strong>
-                        <span>Mais Rápido</span>
+                        <strong data-i18n="hero.metric3_value">10x</strong>
+                        <span data-i18n="hero.metric3_label">Mais Rápido</span>
                     </div>
                 </div>
 
@@ -70,7 +75,7 @@
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                     </svg>
-                    Confiado por mais de <strong>2.000 profissionais</strong> da área de oftalmologia
+                    <span data-i18n="hero.trust_badge">Confiado por mais de <strong>2.000 profissionais</strong> da área de oftalmologia</span>
                 </div>
             </div>
 
@@ -87,17 +92,17 @@
                                             fill="#FF6606" />
                                     </svg>
                                 </div>
-                                <span>Lens AI Engine</span>
+                                <span data-i18n="hero.mockup_header">Lens AI Engine</span>
                             </div>
                             <div class="app-chat">
-                                <div class="chat-bubble user">O que é o sinal de Hoyt?</div>
+                                <div class="chat-bubble user" data-i18n="hero.mockup_question">O que é o sinal de Hoyt?</div>
                                 <div class="chat-bubble ai">
-                                    <p>O sinal de Hoyt refere-se a defeitos na camada de fibras nervosas da retina
+                                    <p data-i18n="hero.mockup_answer">O sinal de Hoyt refere-se a defeitos na camada de fibras nervosas da retina
                                         visíveis na fundoscopia, indicando <strong>perda axonal no nervo óptico</strong>.
                                         É um achado de neuropatia óptica glaucomatosa.</p>
                                 </div>
                                 <div class="chat-input-mockup">
-                                    <div class="input-pill">Faça uma pergunta clínica...</div>
+                                    <div class="input-pill" data-i18n="hero.mockup_input">Faça uma pergunta clínica...</div>
                                 </div>
                             </div>
                         </div>
@@ -110,9 +115,9 @@
         <section class="section-app-showcase" id="app-acao">
             <div class="container">
                 <div class="section-header" data-aos="fade-up" data-aos-duration="800">
-                    <span class="pill-badge">O APP EM AÇÃO</span>
-                    <h2 class="section-title">Conheça o Oftbook por Dentro</h2>
-                    <p class="section-desc">Veja as funcionalidades reais que transformam a prática oftalmológica de milhares de profissionais.</p>
+                    <span class="pill-badge" data-i18n="carousel.badge">O APP EM AÇÃO</span>
+                    <h2 class="section-title" data-i18n="carousel.title">Conheça o Oftbook por Dentro</h2>
+                    <p class="section-desc" data-i18n="carousel.desc">Veja as funcionalidades reais que transformam a prática oftalmológica de milhares de profissionais.</p>
                 </div>
 
                 <div class="carousel-split" data-aos="fade-up" data-aos-delay="200">
@@ -137,15 +142,15 @@
                             <div class="counter-line"></div>
                         </div>
 
-                        <h3 class="slide-title" id="slide-title">Lens AI</h3>
-                        <span class="slide-subtitle" id="slide-subtitle">Tire Sua Dúvida em Segundos</span>
-                        <p class="slide-desc" id="slide-desc">Acesse a Lens AI, perguntas rápidas, condutas e todas as ferramentas do Oftbook direto da tela inicial. Interface intuitiva pensada para o dia a dia do oftalmologista.</p>
+                        <h3 class="slide-title" id="slide-title" data-i18n="carousel.slide1_title">Lens AI</h3>
+                        <span class="slide-subtitle" id="slide-subtitle" data-i18n="carousel.slide1_subtitle">Tire Sua Dúvida em Segundos</span>
+                        <p class="slide-desc" id="slide-desc" data-i18n="carousel.slide1_desc">Acesse a Lens AI, perguntas rápidas, condutas e todas as ferramentas do Oftbook direto da tela inicial. Interface intuitiva pensada para o dia a dia do oftalmologista.</p>
 
                         <div class="carousel-nav-row">
-                            <button class="carousel-btn carousel-prev" aria-label="Anterior">
+                            <button class="carousel-btn carousel-prev" aria-label="Anterior" data-i18n-attr="aria-label:carousel.btn_prev">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
                             </button>
-                            <button class="carousel-btn carousel-next" aria-label="Próximo">
+                            <button class="carousel-btn carousel-next" aria-label="Próximo" data-i18n-attr="aria-label:carousel.btn_next">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
                             </button>
                             <button class="carousel-auto-toggle" id="auto-toggle">&#9654; Auto</button>
@@ -170,9 +175,9 @@
         <section class="section-features" id="funcionalidades-cards">
             <div class="container">
                 <div class="section-header" data-aos="fade-up" data-aos-duration="800">
-                    <span class="pill-badge">FUNCIONALIDADES</span>
-                    <h2 class="section-title">Tudo que Você Precisa<br>na Prática Clínica</h2>
-                    <p class="section-desc">Do diagnóstico inicial ao tratamento completo. Ferramentas essenciais para médicos e estudantes de oftalmologia.</p>
+                    <span class="pill-badge" data-i18n="features.badge">FUNCIONALIDADES</span>
+                    <h2 class="section-title" data-i18n="features.title">Tudo que Você Precisa<br>na Prática Clínica</h2>
+                    <p class="section-desc" data-i18n="features.desc">Do diagnóstico inicial ao tratamento completo. Ferramentas essenciais para médicos e estudantes de oftalmologia.</p>
                 </div>
 
                 <div class="bento-features">
@@ -184,8 +189,8 @@
                                 <path d="M8 12h8M12 8v8"/>
                             </svg>
                         </div>
-                        <h3>Calculadoras Clínicas</h3>
-                        <p>Apoio à decisão em tempo real com 8+ calculadoras especializadas. Conversão automática de acuidade visual entre Snellen, Decimal e LogMAR.</p>
+                        <h3 data-i18n="features.card1_title">Calculadoras Clínicas</h3>
+                        <p data-i18n="features.card1_desc">Apoio à decisão em tempo real com 8+ calculadoras especializadas. Conversão automática de acuidade visual entre Snellen, Decimal e LogMAR.</p>
                     </div>
 
                     <!-- Card 2: Condutas (1x1) -->
@@ -196,8 +201,8 @@
                                 <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>
                             </svg>
                         </div>
-                        <h3>300+ Condutas Médicas</h3>
-                        <p>Acesso rápido a protocolos atualizados para urgências e rotinas. Categorização por especialidade.</p>
+                        <h3 data-i18n="features.card2_title">300+ Condutas Médicas</h3>
+                        <p data-i18n="features.card2_desc">Acesso rápido a protocolos atualizados para urgências e rotinas. Categorização por especialidade.</p>
                     </div>
 
                     <!-- Card 3: Lens AI (1x2 tall — destaque) -->
@@ -209,8 +214,8 @@
                             </svg>
                             <div class="mini-glow"></div>
                         </div>
-                        <h3>Inteligência Lens AI</h3>
-                        <p>Não apenas respostas, mas segurança clínica embasada em literatura médica oficial. Cada resposta foi treinada exclusivamente com conteúdo de oftalmologia, sem inventar, sem alucinar.</p>
+                        <h3 data-i18n="features.card3_title">Inteligência Lens AI</h3>
+                        <p data-i18n="features.card3_desc">Não apenas respostas, mas segurança clínica embasada em literatura médica oficial. Cada resposta foi treinada exclusivamente com conteúdo de oftalmologia, sem inventar, sem alucinar.</p>
                     </div>
 
                     <!-- Card 4: Segurança (2x1 wide) -->
@@ -221,13 +226,13 @@
                                 <path d="M9 12l2 2 4-4"/>
                             </svg>
                         </div>
-                        <h3>Segurança Clínica Garantida</h3>
-                        <p>Com nossas ferramentas a sua decisão será segura. Sem dúvidas, sem arrependimentos, sem erros.</p>
+                        <h3 data-i18n="features.card4_title">Segurança Clínica Garantida</h3>
+                        <p data-i18n="features.card4_desc">Com nossas ferramentas a sua decisão será segura. Sem dúvidas, sem arrependimentos, sem erros.</p>
                     </div>
                 </div>
 
                 <div class="section-cta-link" data-aos="fade-up" data-aos-delay="500">
-                    <a href="#funcionalidades" class="link-arrow">Explorar Todas as Funcionalidades
+                    <a href="#funcionalidades" class="link-arrow"><span data-i18n="features.cta_link">Explorar Todas as Funcionalidades</span>
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
@@ -240,10 +245,10 @@
         <section class="section-lens-ai" id="inteligencia">
             <div class="container">
                 <div class="lens-header" data-aos="fade-up">
-                    <span class="pill-badge">IA PARA OFTALMOLOGIA</span>
-                    <h2 class="section-title">Uma Inteligência Artificial que <br><span
+                    <span class="pill-badge" data-i18n="lens.badge">IA PARA OFTALMOLOGIA</span>
+                    <h2 class="section-title" data-i18n="lens.title">Uma Inteligência Artificial que <br><span
                             class="gradient-tech">Entende Oftalmologia</span> de Verdade.</h2>
-                    <p class="section-desc">O Lens AI não apenas responde suas dúvidas clínicas complexas. Ele
+                    <p class="section-desc" data-i18n="lens.desc">O Lens AI não apenas responde suas dúvidas clínicas complexas. Ele
                         embasa cada resposta na literatura científica especializada em oftalmologia, sem inventar, sem alucinar.</p>
                 </div>
             </div>
@@ -252,21 +257,21 @@
                 <div class="lens-scroll-content">
                     <div class="lens-features">
                         <article class="lens-feature-item">
-                            <h3 class="feature-title">Respostas Treinadas em Oftalmologia</h3>
-                            <p class="feature-desc">Confiança total e segurança clínica. Cada resposta foi treinada exclusivamente com literatura confiável de oftalmologia.</p>
+                            <h3 class="feature-title" data-i18n="lens.feature1_title">Respostas Treinadas em Oftalmologia</h3>
+                            <p class="feature-desc" data-i18n="lens.feature1_desc">Confiança total e segurança clínica. Cada resposta foi treinada exclusivamente com literatura confiável de oftalmologia.</p>
                         </article>
                         <article class="lens-feature-item">
-                            <h3 class="feature-title">Especialização Absoluta</h3>
-                            <p class="feature-desc">Treinado com literatura de todas as áreas de oftalmologia. Conhecimento específico para cada subespecialidade.</p>
+                            <h3 class="feature-title" data-i18n="lens.feature2_title">Especialização Absoluta</h3>
+                            <p class="feature-desc" data-i18n="lens.feature2_desc">Treinado com literatura de todas as áreas de oftalmologia. Conhecimento específico para cada subespecialidade.</p>
                         </article>
                         <article class="lens-feature-item">
-                            <h3 class="feature-title">Histórico de Conversas</h3>
-                            <p class="feature-desc">Retome de onde parou para comparar evoluções de casos. Acompanhamento completo do histórico clínico do paciente.</p>
+                            <h3 class="feature-title" data-i18n="lens.feature3_title">Histórico de Conversas</h3>
+                            <p class="feature-desc" data-i18n="lens.feature3_desc">Retome de onde parou para comparar evoluções de casos. Acompanhamento completo do histórico clínico do paciente.</p>
                         </article>
                     </div>
 
                     <div class="section-cta-link">
-                        <a href="#inteligencia" class="link-arrow">Conhecer o Lens AI
+                        <a href="#inteligencia" class="link-arrow"><span data-i18n="lens.cta_link">Conhecer o Lens AI</span>
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M5 12h14M12 5l7 7-7 7"/>
                             </svg>
@@ -284,25 +289,25 @@
                                         fill="#FF6606" />
                                 </svg>
                             </div>
-                            <span>Lens AI Engine</span>
+                            <span data-i18n="lens.mockup_header">Lens AI Engine</span>
                         </div>
                         <div class="app-chat chat-lens">
-                            <div class="chat-bubble user">
+                            <div class="chat-bubble user" data-i18n="lens.mockup_question">
                                 Olho vermelho e dor. Como diferenciar episclerite de esclerite?
                             </div>
                             <div class="chat-bubble ai">
-                                <p>Se há apenas desconforto leve, hiperemia superficial e vasos que clareiam com fenilefrina, o quadro é compatível com <strong>episclerite</strong>, condição benigna e autolimitada. Se há dor intensa e profunda, hiperemia difusa com aspecto violáceo e vasos que não clareiam com fenilefrina, trata-se de <strong>esclerite</strong>, uma doença potencialmente grave que exige tratamento sistêmico.</p>
+                                <p data-i18n="lens.mockup_answer">Se há apenas desconforto leve, hiperemia superficial e vasos que clareiam com fenilefrina, o quadro é compatível com <strong>episclerite</strong>, condição benigna e autolimitada. Se há dor intensa e profunda, hiperemia difusa com aspecto violáceo e vasos que não clareiam com fenilefrina, trata-se de <strong>esclerite</strong>, uma doença potencialmente grave que exige tratamento sistêmico.</p>
                                 <div class="citation">
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="2">
                                         <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
                                         <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
                                     </svg>
-                                    CBO: Doenças da Esclera, p. 187
+                                    <span data-i18n="lens.mockup_citation">CBO: Doenças da Esclera, p. 187</span>
                                 </div>
                             </div>
                             <div class="chat-input-mockup">
-                                <div class="input-pill">Faça uma pergunta clínica...</div>
+                                <div class="input-pill" data-i18n="lens.mockup_input">Faça uma pergunta clínica...</div>
                             </div>
                         </div>
                     </div>
@@ -313,8 +318,8 @@
         <section class="section-calculators-spotlight" id="calculadoras">
             <div class="container calc-container">
                 <div class="calc-header" data-aos="fade-up">
-                    <h2 class="section-title dark-mode-title">Cálculos Essenciais em Segundos</h2>
-                    <p class="section-desc dark-mode-desc">Nossas calculadoras exibem faixas de referência integradas.
+                    <h2 class="section-title dark-mode-title" data-i18n="calc.title">Cálculos Essenciais em Segundos</h2>
+                    <p class="section-desc dark-mode-desc" data-i18n="calc.desc">Nossas calculadoras exibem faixas de referência integradas.
                         Converta a Acuidade Visual automaticamente entre Snellen, Decimal e LogMAR em um piscar de
                         olhos.</p>
                 </div>
@@ -329,22 +334,22 @@
                                         stroke-linejoin="round" />
                                 </svg>
                             </div>
-                            <span>Córnea / PIO</span>
+                            <span data-i18n="calc.header_title">Córnea / PIO</span>
                         </div>
 
                         <div class="calc-mockup-body">
                             <div class="calc-input-group">
-                                <label>Paquimetria (µm)</label>
+                                <label data-i18n="calc.label1">Paquimetria (µm)</label>
                                 <div class="calc-input-box">520</div>
                             </div>
                             <div class="calc-input-group">
-                                <label>PIO Medida (mmHg)</label>
+                                <label data-i18n="calc.label2">PIO Medida (mmHg)</label>
                                 <div class="calc-input-box">18</div>
                             </div>
 
                             <div class="calc-result-box">
-                                <span class="result-label">PIO Corrigida</span>
-                                <div class="result-value">20.4 <span class="unit">mmHg</span></div>
+                                <span class="result-label" data-i18n="calc.result_label">PIO Corrigida</span>
+                                <div class="result-value">20.4 <span class="unit" data-i18n="calc.result_unit">mmHg</span></div>
                             </div>
                         </div>
                     </div>
@@ -357,16 +362,16 @@
         <section class="section-tabs-interactive" id="condutas">
             <div class="container tabs-container">
                 <div class="section-header center-align" data-aos="fade-up">
-                    <h2 class="section-title">Segurança Para o Seu Atendimento</h2>
-                    <p class="section-desc">Mais de 300 condutas clínicas atualizadas para acesso rápido no consultório.
+                    <h2 class="section-title" data-i18n="tabs.title">Segurança Para o Seu Atendimento</h2>
+                    <p class="section-desc" data-i18n="tabs.desc">Mais de 300 condutas clínicas atualizadas para acesso rápido no consultório.
                         Bulário completo com posologias, indicações e contraindicações filtrado por categorias
                         terapêuticas.</p>
                 </div>
 
                 <div class="tabs-wrapper" data-aos="fade-up" data-aos-delay="150">
                     <div class="tabs-switcher">
-                        <button class="tab-btn active" data-target="tab-condutas">Condutas Clínicas</button>
-                        <button class="tab-btn" data-target="tab-bulario">Bulário Oftalmológico</button>
+                        <button class="tab-btn active" data-target="tab-condutas" data-i18n="tabs.tab1">Condutas Clínicas</button>
+                        <button class="tab-btn" data-target="tab-bulario" data-i18n="tabs.tab2">Bulário Oftalmológico</button>
                         <div class="tab-indicator"></div>
                     </div>
 
@@ -381,29 +386,29 @@
                                             <circle cx="11" cy="11" r="8"></circle>
                                             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                                         </svg>
-                                        <span>Buscar conduta... (ex: Úlcera, Glaucoma Agudo)</span>
+                                        <span data-i18n="tabs.search_placeholder">Buscar conduta... (ex: Úlcera, Glaucoma Agudo)</span>
                                     </div>
                                 </div>
                                 <div class="tab-card-body">
                                     <div class="list-item-mock">
-                                        <div class="icon-sq red-sq">URG</div>
+                                        <div class="icon-sq red-sq" data-i18n="tabs.item1_badge">URG</div>
                                         <div class="text-group">
-                                            <h4>Glaucoma Agudo Primário</h4>
-                                            <span>Manejo imediato, hipotensores orais e tópicos.</span>
+                                            <h4 data-i18n="tabs.item1_title">Glaucoma Agudo Primário</h4>
+                                            <span data-i18n="tabs.item1_desc">Manejo imediato, hipotensores orais e tópicos.</span>
                                         </div>
                                     </div>
                                     <div class="list-item-mock">
-                                        <div class="icon-sq yellow-sq">INF</div>
+                                        <div class="icon-sq yellow-sq" data-i18n="tabs.item2_badge">INF</div>
                                         <div class="text-group">
-                                            <h4>Úlcera de Córnea Bacteriana</h4>
-                                            <span>Colheita de material e ATB fortificado.</span>
+                                            <h4 data-i18n="tabs.item2_title">Úlcera de Córnea Bacteriana</h4>
+                                            <span data-i18n="tabs.item2_desc">Colheita de material e ATB fortificado.</span>
                                         </div>
                                     </div>
                                     <div class="list-item-mock">
-                                        <div class="icon-sq blue-sq">RET</div>
+                                        <div class="icon-sq blue-sq" data-i18n="tabs.item3_badge">RET</div>
                                         <div class="text-group">
-                                            <h4>Descolamento de Retina (DRR)</h4>
-                                            <span>Mapeamento, decúbito e encaminhamento cirúrgico.</span>
+                                            <h4 data-i18n="tabs.item3_title">Descolamento de Retina (DRR)</h4>
+                                            <span data-i18n="tabs.item3_desc">Mapeamento, decúbito e encaminhamento cirúrgico.</span>
                                         </div>
                                     </div>
                                 </div>
@@ -415,28 +420,28 @@
                             <div class="tab-card glass-panel-light">
                                 <div class="tab-card-header">
                                     <div class="categories-mock">
-                                        <span class="cat-chip active">Antibióticos</span>
-                                        <span class="cat-chip">Hipotensores</span>
-                                        <span class="cat-chip">Corticoides</span>
-                                        <span class="cat-chip">Lubrificantes</span>
+                                        <span class="cat-chip active" data-i18n="tabs.cat1">Antibióticos</span>
+                                        <span class="cat-chip" data-i18n="tabs.cat2">Hipotensores</span>
+                                        <span class="cat-chip" data-i18n="tabs.cat3">Corticoides</span>
+                                        <span class="cat-chip" data-i18n="tabs.cat4">Lubrificantes</span>
                                     </div>
                                 </div>
                                 <div class="tab-card-body pill-layout">
                                     <div class="med-pill">
-                                        <div class="med-name">Moxifloxacino 0,5%</div>
-                                        <div class="med-detail">Vigamox, Vigadexa (Assov)</div>
+                                        <div class="med-name" data-i18n="tabs.med1_name">Moxifloxacino 0,5%</div>
+                                        <div class="med-detail" data-i18n="tabs.med1_detail">Vigamox, Vigadexa (Assov)</div>
                                     </div>
                                     <div class="med-pill">
-                                        <div class="med-name">Tobramicina 0,3%</div>
-                                        <div class="med-detail">Tobrex, Tobradex</div>
+                                        <div class="med-name" data-i18n="tabs.med2_name">Tobramicina 0,3%</div>
+                                        <div class="med-detail" data-i18n="tabs.med2_detail">Tobrex, Tobradex</div>
                                     </div>
                                     <div class="med-pill">
-                                        <div class="med-name">Gatifloxacino 0,3%</div>
-                                        <div class="med-detail">Zymar, Zymaxid</div>
+                                        <div class="med-name" data-i18n="tabs.med3_name">Gatifloxacino 0,3%</div>
+                                        <div class="med-detail" data-i18n="tabs.med3_detail">Zymar, Zymaxid</div>
                                     </div>
                                     <div class="med-pill">
-                                        <div class="med-name">Ceftazidima 50mg/mL</div>
-                                        <div class="med-detail">Fortificado (Preparo)</div>
+                                        <div class="med-name" data-i18n="tabs.med4_name">Ceftazidima 50mg/mL</div>
+                                        <div class="med-detail" data-i18n="tabs.med4_detail">Fortificado (Preparo)</div>
                                     </div>
                                 </div>
                             </div>
@@ -450,9 +455,9 @@
         <section class="section-testimonials" id="depoimentos">
             <div class="container">
                 <div class="section-header" data-aos="fade-up" data-aos-duration="800">
-                    <span class="pill-badge">DEPOIMENTOS</span>
-                    <h2 class="section-title">Confiado por Oftalmologistas<br>em Todo Brasil</h2>
-                    <p class="section-desc">Veja o que profissionais da oftalmologia dizem sobre o Oftbook.</p>
+                    <span class="pill-badge" data-i18n="testimonials.badge">DEPOIMENTOS</span>
+                    <h2 class="section-title" data-i18n="testimonials.title">Confiado por Oftalmologistas<br>em Todo Brasil</h2>
+                    <p class="section-desc" data-i18n="testimonials.desc">Veja o que profissionais da oftalmologia dizem sobre o Oftbook.</p>
                 </div>
 
                 <div class="testimonials-grid" data-aos="fade-up" data-aos-delay="200">
@@ -460,12 +465,12 @@
                         <div class="testimonial-stars">
                             <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
                         </div>
-                        <p class="testimonial-quote">"O Oftbook revolucionou minha prática. Agora tenho acesso a condutas atualizadas em segundos, com referências bibliográficas que garantem segurança clínica."</p>
+                        <p class="testimonial-quote" data-i18n="testimonials.t1_quote">"O Oftbook revolucionou minha prática. Agora tenho acesso a condutas atualizadas em segundos, com referências bibliográficas que garantem segurança clínica."</p>
                         <div class="testimonial-author">
                             <div class="author-avatar">CM</div>
                             <div class="author-info">
-                                <strong>Dr. Carlos Mendes</strong>
-                                <span>Oftalmologista - Glaucoma</span>
+                                <strong data-i18n="testimonials.t1_name">Dr. Carlos Mendes</strong>
+                                <span data-i18n="testimonials.t1_role">Oftalmologista - Glaucoma</span>
                             </div>
                         </div>
                     </div>
@@ -474,12 +479,12 @@
                         <div class="testimonial-stars">
                             <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
                         </div>
-                        <p class="testimonial-quote">"Como residente, o Oftbook é essencial. As calculadoras clínicas e o Lens AI me ajudam a tomar decisões mais rápidas e seguras durante o atendimento."</p>
+                        <p class="testimonial-quote" data-i18n="testimonials.t2_quote">"Como residente, o Oftbook é essencial. As calculadoras clínicas e o Lens AI me ajudam a tomar decisões mais rápidas e seguras durante o atendimento."</p>
                         <div class="testimonial-author">
                             <div class="author-avatar">AS</div>
                             <div class="author-info">
-                                <strong>Dra. Ana Silva</strong>
-                                <span>Residente de Oftalmologia</span>
+                                <strong data-i18n="testimonials.t2_name">Dra. Ana Silva</strong>
+                                <span data-i18n="testimonials.t2_role">Residente de Oftalmologia</span>
                             </div>
                         </div>
                     </div>
@@ -488,12 +493,12 @@
                         <div class="testimonial-stars">
                             <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
                         </div>
-                        <p class="testimonial-quote">"A especialização em retina é impressionante. Cada resposta vem com referências exatas, o que me dá confiança total nas recomendações."</p>
+                        <p class="testimonial-quote" data-i18n="testimonials.t3_quote">"A especialização em retina é impressionante. Cada resposta vem com referências exatas, o que me dá confiança total nas recomendações."</p>
                         <div class="testimonial-author">
                             <div class="author-avatar">RC</div>
                             <div class="author-info">
-                                <strong>Dr. Roberto Costa</strong>
-                                <span>Cirurgião de Retina</span>
+                                <strong data-i18n="testimonials.t3_name">Dr. Roberto Costa</strong>
+                                <span data-i18n="testimonials.t3_role">Cirurgião de Retina</span>
                             </div>
                         </div>
                     </div>
@@ -502,12 +507,12 @@
                         <div class="testimonial-stars">
                             <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
                         </div>
-                        <p class="testimonial-quote">"É a ferramenta que todo oftalmologista deveria ter no consultório."</p>
+                        <p class="testimonial-quote" data-i18n="testimonials.t4_quote">"É a ferramenta que todo oftalmologista deveria ter no consultório."</p>
                         <div class="testimonial-author">
                             <div class="author-avatar">JO</div>
                             <div class="author-info">
-                                <strong>Dra. Juliana Oliveira</strong>
-                                <span>Oftalmologista - Córnea</span>
+                                <strong data-i18n="testimonials.t4_name">Dra. Juliana Oliveira</strong>
+                                <span data-i18n="testimonials.t4_role">Oftalmologista - Córnea</span>
                             </div>
                         </div>
                     </div>
@@ -515,16 +520,16 @@
 
                 <div class="testimonial-stats" data-aos="fade-up" data-aos-delay="400">
                     <div class="stat-item">
-                        <strong>2.000+</strong>
-                        <span>Profissionais Ativos</span>
+                        <strong data-i18n="testimonials.stat1_value">2.000+</strong>
+                        <span data-i18n="testimonials.stat1_label">Profissionais Ativos</span>
                     </div>
                     <div class="stat-item">
-                        <strong>4.9<span class="star">&#9733;</span></strong>
-                        <span>Avaliação Média</span>
+                        <strong data-i18n="testimonials.stat2_value">4.9<span class="star">&#9733;</span></strong>
+                        <span data-i18n="testimonials.stat2_label">Avaliação Média</span>
                     </div>
                     <div class="stat-item">
-                        <strong>98%</strong>
-                        <span>Taxa de Satisfação</span>
+                        <strong data-i18n="testimonials.stat3_value">98%</strong>
+                        <span data-i18n="testimonials.stat3_label">Taxa de Satisfação</span>
                     </div>
                 </div>
             </div>
@@ -534,136 +539,136 @@
         <section class="section-faq" id="faq">
             <div class="container">
                 <div class="section-header" data-aos="fade-up" data-aos-duration="800">
-                    <span class="pill-badge">PERGUNTAS FREQUENTES</span>
-                    <h2 class="section-title">Tire Suas Dúvidas</h2>
-                    <p class="section-desc">Tudo que você precisa saber sobre o Oftbook antes de começar.</p>
+                    <span class="pill-badge" data-i18n="faq.badge">PERGUNTAS FREQUENTES</span>
+                    <h2 class="section-title" data-i18n="faq.title">Tire Suas Dúvidas</h2>
+                    <p class="section-desc" data-i18n="faq.desc">Tudo que você precisa saber sobre o Oftbook antes de começar.</p>
                 </div>
 
                 <div class="faq-list" data-aos="fade-up" data-aos-delay="200">
                     <div class="faq-item">
                         <button class="faq-question">
-                            <span>O Oftbook é seguro para tomar decisões clínicas?</span>
+                            <span data-i18n="faq.q1">O Oftbook é seguro para tomar decisões clínicas?</span>
                             <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M6 9l6 6 6-6"/>
                             </svg>
                         </button>
                         <div class="faq-answer">
-                            <p>Sim. Todas as condutas e respostas do Lens AI são embasadas em literatura científica oficial de oftalmologia. A plataforma é desenvolvida por oftalmologistas e revisada continuamente por especialistas da área.</p>
+                            <p data-i18n="faq.a1">Sim. Todas as condutas e respostas do Lens AI são embasadas em literatura científica oficial de oftalmologia. A plataforma é desenvolvida por oftalmologistas e revisada continuamente por especialistas da área.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
                         <button class="faq-question">
-                            <span>A IA do Oftbook pode alucinar ou inventar respostas?</span>
+                            <span data-i18n="faq.q2">A IA do Oftbook pode alucinar ou inventar respostas?</span>
                             <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M6 9l6 6 6-6"/>
                             </svg>
                         </button>
                         <div class="faq-answer">
-                            <p>O Lens AI foi treinado exclusivamente com conteúdo de oftalmologia validado por especialistas. Diferente de IAs generalistas, ele não inventa respostas. Quando não possui informação suficiente sobre um tema, informa ao usuário em vez de gerar conteúdo impreciso.</p>
+                            <p data-i18n="faq.a2">O Lens AI foi treinado exclusivamente com conteúdo de oftalmologia validado por especialistas. Diferente de IAs generalistas, ele não inventa respostas. Quando não possui informação suficiente sobre um tema, informa ao usuário em vez de gerar conteúdo impreciso.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
                         <button class="faq-question">
-                            <span>As condutas são atualizadas com frequência?</span>
+                            <span data-i18n="faq.q3">As condutas são atualizadas com frequência?</span>
                             <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M6 9l6 6 6-6"/>
                             </svg>
                         </button>
                         <div class="faq-answer">
-                            <p>Sim. Nossa equipe de especialistas revisa e atualiza continuamente as mais de 300 condutas disponíveis na plataforma, acompanhando as últimas evidências científicas e diretrizes das sociedades de oftalmologia.</p>
+                            <p data-i18n="faq.a3">Sim. Nossa equipe de especialistas revisa e atualiza continuamente as mais de 300 condutas disponíveis na plataforma, acompanhando as últimas evidências científicas e diretrizes das sociedades de oftalmologia.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
                         <button class="faq-question">
-                            <span>O Oftbook funciona no celular e tablet?</span>
+                            <span data-i18n="faq.q4">O Oftbook funciona no celular e tablet?</span>
                             <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M6 9l6 6 6-6"/>
                             </svg>
                         </button>
                         <div class="faq-answer">
-                            <p>Sim. O Oftbook é totalmente responsivo e otimizado para smartphones, tablets e desktops. A interface se adapta automaticamente ao tamanho da tela, garantindo uma experiência fluida em qualquer dispositivo.</p>
+                            <p data-i18n="faq.a4">Sim. O Oftbook é totalmente responsivo e otimizado para smartphones, tablets e desktops. A interface se adapta automaticamente ao tamanho da tela, garantindo uma experiência fluida em qualquer dispositivo.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
                         <button class="faq-question">
-                            <span>Preciso estar conectado à internet para usar?</span>
+                            <span data-i18n="faq.q5">Preciso estar conectado à internet para usar?</span>
                             <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M6 9l6 6 6-6"/>
                             </svg>
                         </button>
                         <div class="faq-answer">
-                            <p>Sim, o Oftbook é uma plataforma online que requer conexão à internet para acessar os conteúdos, garantindo que você sempre tenha as informações mais atualizadas. A plataforma é leve e funciona bem mesmo com conexões mais lentas.</p>
+                            <p data-i18n="faq.a5">Sim, o Oftbook é uma plataforma online que requer conexão à internet para acessar os conteúdos, garantindo que você sempre tenha as informações mais atualizadas. A plataforma é leve e funciona bem mesmo com conexões mais lentas.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
                         <button class="faq-question">
-                            <span>O Oftbook está disponível para quais países?</span>
+                            <span data-i18n="faq.q6">O Oftbook está disponível para quais países?</span>
                             <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M6 9l6 6 6-6"/>
                             </svg>
                         </button>
                         <div class="faq-answer">
-                            <p>O Oftbook está disponível globalmente, porém os conteúdos são focados na prática oftalmológica e regulamentos brasileiros. Profissionais de outros países lusófonos também podem se beneficiar da plataforma.</p>
+                            <p data-i18n="faq.a6">O Oftbook está disponível globalmente, porém os conteúdos são focados na prática oftalmológica e regulamentos brasileiros. Profissionais de outros países lusófonos também podem se beneficiar da plataforma.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
                         <button class="faq-question">
-                            <span>Como funciona o suporte ao usuário?</span>
+                            <span data-i18n="faq.q7">Como funciona o suporte ao usuário?</span>
                             <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M6 9l6 6 6-6"/>
                             </svg>
                         </button>
                         <div class="faq-answer">
-                            <p>Oferecemos suporte especializado por e-mail e WhatsApp. Nossa equipe está preparada para ajudar com dúvidas técnicas sobre a plataforma e também para complementar questões clínicas.</p>
+                            <p data-i18n="faq.a7">Oferecemos suporte especializado por e-mail e WhatsApp. Nossa equipe está preparada para ajudar com dúvidas técnicas sobre a plataforma e também para complementar questões clínicas.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
                         <button class="faq-question">
-                            <span>Posso cancelar minha assinatura a qualquer momento?</span>
+                            <span data-i18n="faq.q8">Posso cancelar minha assinatura a qualquer momento?</span>
                             <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M6 9l6 6 6-6"/>
                             </svg>
                         </button>
                         <div class="faq-answer">
-                            <p>Sim. Você pode cancelar sua assinatura a cada ciclo de cobrança, sem multas ou taxas adicionais. Além disso, oferecemos 7 dias de garantia incondicional: se não ficar satisfeito, devolvemos 100% do valor investido.</p>
+                            <p data-i18n="faq.a8">Sim. Você pode cancelar sua assinatura a cada ciclo de cobrança, sem multas ou taxas adicionais. Além disso, oferecemos 7 dias de garantia incondicional: se não ficar satisfeito, devolvemos 100% do valor investido.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
                         <button class="faq-question">
-                            <span>Para quem o Oftbook é indicado?</span>
+                            <span data-i18n="faq.q9">Para quem o Oftbook é indicado?</span>
                             <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M6 9l6 6 6-6"/>
                             </svg>
                         </button>
                         <div class="faq-answer">
-                            <p>O Oftbook foi criado para oftalmologistas, médicos em formação, residentes e acadêmicos que desejam uma ferramenta confiável para decisões clínicas e cirúrgicas. Seja no consultório, hospital ou durante a residência médica.</p>
+                            <p data-i18n="faq.a9">O Oftbook foi criado para oftalmologistas, médicos em formação, residentes e acadêmicos que desejam uma ferramenta confiável para decisões clínicas e cirúrgicas. Seja no consultório, hospital ou durante a residência médica.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
                         <button class="faq-question">
-                            <span>O que está incluído na assinatura?</span>
+                            <span data-i18n="faq.q10">O que está incluído na assinatura?</span>
                             <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M6 9l6 6 6-6"/>
                             </svg>
                         </button>
                         <div class="faq-answer">
-                            <p>A assinatura dá acesso completo a todas as funcionalidades: mais de 300 condutas clínicas, 8+ calculadoras especializadas, Lens AI (IA de oftalmologia), bulário oftalmológico, atlas com imagens detalhadas, guias cirúrgicos, códigos CID-10/CID-11, e todas as atualizações futuras.</p>
+                            <p data-i18n="faq.a10">A assinatura dá acesso completo a todas as funcionalidades: mais de 300 condutas clínicas, 8+ calculadoras especializadas, Lens AI (IA de oftalmologia), bulário oftalmológico, atlas com imagens detalhadas, guias cirúrgicos, códigos CID-10/CID-11, e todas as atualizações futuras.</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="faq-contact" data-aos="fade-up" data-aos-delay="300">
-                    <p>Ainda tem dúvidas? Fale diretamente com nossa equipe.</p>
-                    <a href="https://wa.me/message/ZUT3XWNE22KJI1" class="btn btn-secondary" target="_blank" rel="noopener">Fale Conosco</a>
+                    <p data-i18n="faq.contact_text">Ainda tem dúvidas? Fale diretamente com nossa equipe.</p>
+                    <a href="https://wa.me/message/ZUT3XWNE22KJI1" class="btn btn-secondary" target="_blank" rel="noopener" data-i18n="faq.contact_btn">Fale Conosco</a>
                 </div>
             </div>
         </section>
@@ -671,28 +676,28 @@
         <!-- SEÇÃO: CTA FINAL -->
         <section class="section-cta-final" id="baixar">
             <div class="container cta-container" data-aos="zoom-in" data-aos-duration="1000">
-                <h2 class="cta-title">Pronto Para Elevar Sua <br>Prática Oftalmológica?</h2>
-                <p class="cta-desc">Junte-se a oftalmologistas e residentes que já usam o Oftbook para diagnósticos
+                <h2 class="cta-title" data-i18n="cta.title">Pronto Para Elevar Sua <br>Prática Oftalmológica?</h2>
+                <p class="cta-desc" data-i18n="cta.desc">Junte-se a oftalmologistas e residentes que já usam o Oftbook para diagnósticos
                     rápidos, seguros e baseados em evidências.</p>
 
                 <ul class="cta-benefit-pills">
-                    <li>Acesso completo</li>
-                    <li>Suporte 24/7</li>
-                    <li>Atualizações contínuas</li>
-                    <li>Garantia 7 dias</li>
+                    <li data-i18n="cta.pill1">Acesso completo</li>
+                    <li data-i18n="cta.pill2">Suporte 24/7</li>
+                    <li data-i18n="cta.pill3">Atualizações contínuas</li>
+                    <li data-i18n="cta.pill4">Garantia 7 dias</li>
                 </ul>
 
                 <div class="cta-actions">
                     <a href="https://apps.apple.com/br/app/oftbook/id6759061221" class="btn btn-primary btn-glow" target="_blank" rel="noopener">
-                        Assinar Agora
+                        <span data-i18n="cta.btn_primary">Assinar Agora</span>
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
                         </svg>
                     </a>
-                    <a href="https://wa.me/message/ZUT3XWNE22KJI1" class="btn btn-secondary" target="_blank" rel="noopener">Fale com Especialista</a>
+                    <a href="https://wa.me/message/ZUT3XWNE22KJI1" class="btn btn-secondary" target="_blank" rel="noopener" data-i18n="cta.btn_secondary">Fale com Especialista</a>
                 </div>
 
-                <p class="cta-trust-line">&#10003; 7 dias de garantia incondicional &bull; Cancele a qualquer momento &bull; Suporte especializado incluído</p>
+                <p class="cta-trust-line" data-i18n="cta.trust_line">&#10003; 7 dias de garantia incondicional &bull; Cancele a qualquer momento &bull; Suporte especializado incluído</p>
             </div>
         </section>
     </main>
@@ -702,22 +707,22 @@
         <div class="container footer-grid">
             <div class="footer-brand">
                 <div class="footer-logo"><img src="oftbook df.png" alt="OftBook" style="height:32px;width:auto;"></div>
-                <p class="footer-tagline">A inteligência artificial especializada em oftalmologia para decisões clínicas mais rápidas e seguras.</p>
+                <p class="footer-tagline" data-i18n="footer.tagline">A inteligência artificial especializada em oftalmologia para decisões clínicas mais rápidas e seguras.</p>
             </div>
             <div class="footer-contact">
-                <h4>Contato</h4>
+                <h4 data-i18n="footer.contact_heading">Contato</h4>
                 <a href="mailto:contato@oftbook.com.br">contato@oftbook.com.br</a>
                 <a href="https://wa.me/message/ZUT3XWNE22KJI1" target="_blank" rel="noopener">+55 (47) 99706-5236</a>
             </div>
             <div class="footer-links">
-                <h4>Legal</h4>
-                <a href="#">Política de Privacidade</a>
-                <a href="#">Termos de Uso</a>
-                <a href="#">Cookies</a>
+                <h4 data-i18n="footer.legal_heading">Legal</h4>
+                <a href="#" data-i18n="footer.link_privacy">Política de Privacidade</a>
+                <a href="#" data-i18n="footer.link_terms">Termos de Uso</a>
+                <a href="#" data-i18n="footer.link_cookies">Cookies</a>
             </div>
         </div>
         <div class="container footer-bottom">
-            <p>&copy; 2026 Oftbook. Todos os direitos reservados.</p>
+            <p data-i18n="footer.copyright">&copy; 2026 Oftbook. Todos os direitos reservados.</p>
         </div>
     </footer>
 

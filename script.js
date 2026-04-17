@@ -328,10 +328,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
     // PAUSE CAROUSEL ON TAB INACTIVE (save battery)
     // =========================================================================
-
-    // =========================================================================
-    // PAUSE CAROUSEL ON TAB INACTIVE (save battery)
-    // =========================================================================
     document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
             if (autoPlaying) clearInterval(autoPlayInterval);
@@ -339,5 +335,79 @@ document.addEventListener('DOMContentLoaded', () => {
             if (autoPlaying) startAutoPlay();
         }
     });
+
+    // =========================================================================
+    // i18n — Language Switcher
+    // =========================================================================
+    const langBtns = document.querySelectorAll('.lang-btn');
+    let currentTranslations = {};
+    let currentLang = localStorage.getItem('oftbook-lang') || 'pt';
+
+    async function setLanguage(lang) {
+        try {
+            const res = await fetch(`locales/${lang}.json`);
+            if (!res.ok) throw new Error('Locale not found');
+            currentTranslations = await res.json();
+        } catch (e) {
+            console.warn('i18n: could not load', lang, e);
+            return;
+        }
+
+        // Update text nodes
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (currentTranslations[key] !== undefined) {
+                el.innerHTML = currentTranslations[key];
+            }
+        });
+
+        // Update attributes (placeholder, aria-label, alt)
+        document.querySelectorAll('[data-i18n-attr]').forEach(el => {
+            const pairs = el.getAttribute('data-i18n-attr').split(',');
+            pairs.forEach(pair => {
+                const [attr, key] = pair.trim().split(':');
+                if (currentTranslations[key] !== undefined) {
+                    el.setAttribute(attr, currentTranslations[key]);
+                }
+            });
+        });
+
+        // Update carousel slideData
+        for (let i = 0; i < 8; i++) {
+            const n = i + 1;
+            if (currentTranslations[`carousel.slide${n}_title`]) {
+                slideData[i] = {
+                    title: currentTranslations[`carousel.slide${n}_title`],
+                    subtitle: currentTranslations[`carousel.slide${n}_subtitle`],
+                    desc: currentTranslations[`carousel.slide${n}_desc`]
+                };
+            }
+        }
+        // Refresh current slide text
+        goToSlide(currentSlide);
+
+        // Update html lang & title
+        document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang === 'es' ? 'es' : 'en';
+        if (currentTranslations['meta.title']) {
+            document.title = currentTranslations['meta.title'];
+        }
+
+        // Save preference & update badges
+        currentLang = lang;
+        localStorage.setItem('oftbook-lang', lang);
+        langBtns.forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+    }
+
+    // Bind click events
+    langBtns.forEach(btn => {
+        btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+    });
+
+    // Load saved language on init (skip if PT since HTML is already in PT)
+    if (currentLang !== 'pt') {
+        setLanguage(currentLang);
+    }
 
 });
