@@ -418,9 +418,123 @@ document.addEventListener('DOMContentLoaded', () => {
         const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
         const UTM_STORAGE_KEY = 'oftbook_utm';
 
+        // ---------- Config dos países ----------
+        const COUNTRIES = {
+            BR: {
+                dial: '+55',
+                placeholder: '(11) 99999-9999',
+                mask: (raw) => {
+                    const d = String(raw).replace(/\D/g, '').slice(0, 11);
+                    if (d.length > 7) return `(${d.slice(0,2)}) ${d.slice(2,7)}-${d.slice(7)}`;
+                    if (d.length > 2) return `(${d.slice(0,2)}) ${d.slice(2)}`;
+                    if (d.length > 0) return `(${d}`;
+                    return '';
+                },
+                validate: (raw) => {
+                    const d = String(raw).replace(/\D/g, '');
+                    if (d.length !== 11) return 'Número BR deve ter 11 dígitos (DDD + 9 + número)';
+                    const ddd = parseInt(d.slice(0, 2), 10);
+                    if (ddd < 11 || ddd > 99) return 'DDD inválido';
+                    if (d[2] !== '9') return 'Celular brasileiro precisa começar com 9 depois do DDD';
+                    if (/^(\d)\1+$/.test(d)) return 'Número inválido';
+                    return null;
+                },
+                toE164: (raw) => '+55' + String(raw).replace(/\D/g, '')
+            },
+            AO: {
+                dial: '+244',
+                placeholder: '9XX XXX XXX',
+                mask: (raw) => {
+                    const d = String(raw).replace(/\D/g, '').slice(0, 9);
+                    if (d.length > 6) return `${d.slice(0,3)} ${d.slice(3,6)} ${d.slice(6)}`;
+                    if (d.length > 3) return `${d.slice(0,3)} ${d.slice(3)}`;
+                    return d;
+                },
+                validate: (raw) => {
+                    const d = String(raw).replace(/\D/g, '');
+                    if (d.length !== 9) return 'Número de Angola deve ter 9 dígitos';
+                    if (d[0] !== '9') return 'Celular de Angola começa com 9';
+                    if (/^(\d)\1+$/.test(d)) return 'Número inválido';
+                    return null;
+                },
+                toE164: (raw) => '+244' + String(raw).replace(/\D/g, '')
+            },
+            PT: {
+                dial: '+351',
+                placeholder: '9XX XXX XXX',
+                mask: (raw) => {
+                    const d = String(raw).replace(/\D/g, '').slice(0, 9);
+                    if (d.length > 6) return `${d.slice(0,3)} ${d.slice(3,6)} ${d.slice(6)}`;
+                    if (d.length > 3) return `${d.slice(0,3)} ${d.slice(3)}`;
+                    return d;
+                },
+                validate: (raw) => {
+                    const d = String(raw).replace(/\D/g, '');
+                    if (d.length !== 9) return 'Número de Portugal deve ter 9 dígitos';
+                    if (d[0] !== '9') return 'Celular de Portugal começa com 9';
+                    if (/^(\d)\1+$/.test(d)) return 'Número inválido';
+                    return null;
+                },
+                toE164: (raw) => '+351' + String(raw).replace(/\D/g, '')
+            },
+            MZ: {
+                dial: '+258',
+                placeholder: '8X XXX XXXX',
+                mask: (raw) => {
+                    const d = String(raw).replace(/\D/g, '').slice(0, 9);
+                    if (d.length > 5) return `${d.slice(0,2)} ${d.slice(2,5)} ${d.slice(5)}`;
+                    if (d.length > 2) return `${d.slice(0,2)} ${d.slice(2)}`;
+                    return d;
+                },
+                validate: (raw) => {
+                    const d = String(raw).replace(/\D/g, '');
+                    if (d.length !== 9) return 'Número de Moçambique deve ter 9 dígitos';
+                    if (d[0] !== '8') return 'Celular de Moçambique começa com 8';
+                    if (/^(\d)\1+$/.test(d)) return 'Número inválido';
+                    return null;
+                },
+                toE164: (raw) => '+258' + String(raw).replace(/\D/g, '')
+            },
+            OTHER: {
+                dial: '+',
+                placeholder: '+44 7700 900000 (com código do país)',
+                mask: (raw) => String(raw).replace(/[^\d+\s]/g, ''),
+                validate: (raw) => {
+                    const norm = String(raw).replace(/[^\d+]/g, '');
+                    if (!norm.startsWith('+')) return 'Inclua o código do país com + (ex: +44...)';
+                    const digits = norm.slice(1);
+                    if (digits.length < 7) return 'Número muito curto';
+                    if (digits.length > 15) return 'Número muito longo';
+                    if (/^(\d)\1+$/.test(digits)) return 'Número inválido';
+                    return null;
+                },
+                toE164: (raw) => String(raw).replace(/[^\d+]/g, '')
+            }
+        };
+
+        const UTM_COUNTRY_MAP = {
+            brasil: 'BR', br: 'BR', brazil: 'BR',
+            angola: 'AO', ao: 'AO',
+            portugal: 'PT', pt: 'PT',
+            mocambique: 'MZ', mozambique: 'MZ', mz: 'MZ'
+        };
+
+        function detectCountryFromUTM(campaign) {
+            if (!campaign) return null;
+            const norm = String(campaign).toLowerCase()
+                .normalize('NFD').replace(/[̀-ͯ]/g, '');
+            for (const key of Object.keys(UTM_COUNTRY_MAP)) {
+                if (norm.includes(key)) return UTM_COUNTRY_MAP[key];
+            }
+            return null;
+        }
+
         const modal = document.getElementById('leadModal');
         const form = document.getElementById('leadForm');
         const submitBtn = document.getElementById('leadSubmit');
+        const paisSelect = document.getElementById('leadPais');
+        const telInput = document.getElementById('leadTelefone');
+        const telError = document.getElementById('leadTelefoneError');
         if (!modal || !form) return;
 
         let pendingUrl = null;
@@ -449,20 +563,35 @@ document.addEventListener('DOMContentLoaded', () => {
             return match ? decodeURIComponent(match[2]) : null;
         }
 
-        // ------ Formata telefone BR ------
-        const phoneInput = document.getElementById('leadTelefone');
-        if (phoneInput) {
-            phoneInput.addEventListener('input', (e) => {
-                let v = e.target.value.replace(/\D/g, '').slice(0, 11);
-                if (v.length > 6) {
-                    v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
-                } else if (v.length > 2) {
-                    v = `(${v.slice(0,2)}) ${v.slice(2)}`;
-                } else if (v.length > 0) {
-                    v = `(${v}`;
-                }
-                e.target.value = v;
+        // ------ Telefone: máscara dinâmica por país + reset ao trocar ------
+        function applyCountryToInput() {
+            const code = paisSelect.value;
+            const cfg = COUNTRIES[code] || COUNTRIES.BR;
+            telInput.placeholder = cfg.placeholder;
+            telInput.value = '';
+            telInput.classList.remove('has-error');
+            if (telError) { telError.hidden = true; telError.textContent = ''; }
+        }
+
+        if (paisSelect && telInput) {
+            paisSelect.addEventListener('change', applyCountryToInput);
+
+            telInput.addEventListener('input', (e) => {
+                const cfg = COUNTRIES[paisSelect.value] || COUNTRIES.BR;
+                e.target.value = cfg.mask(e.target.value);
+                telInput.classList.remove('has-error');
+                if (telError) { telError.hidden = true; telError.textContent = ''; }
             });
+        }
+
+        // ------ Pré-seleciona país via utm_campaign ------
+        function presetCountryFromUTM() {
+            const utms = getUTMs();
+            const detected = detectCountryFromUTM(utms.utm_campaign);
+            if (detected && COUNTRIES[detected] && paisSelect) {
+                paisSelect.value = detected;
+                applyCountryToInput();
+            }
         }
 
         // ------ Abre modal ------
@@ -500,7 +629,28 @@ document.addEventListener('DOMContentLoaded', () => {
         // ------ Submit ------
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            if (!form.checkValidity()) { form.reportValidity(); return; }
+
+            // Validação nativa (nome + email)
+            if (!form.nome.checkValidity() || !form.email.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            // Validação custom de telefone por país
+            const paisCode = paisSelect.value;
+            const cfg = COUNTRIES[paisCode] || COUNTRIES.BR;
+            const telErr = cfg.validate(telInput.value);
+            if (telErr) {
+                telInput.classList.add('has-error');
+                if (telError) {
+                    telError.textContent = telErr;
+                    telError.hidden = false;
+                }
+                telInput.focus();
+                return;
+            }
+
+            const telefoneE164 = cfg.toE164(telInput.value);
 
             const labelEl = submitBtn.querySelector('.lead-modal__submit-label');
             const loadingEl = submitBtn.querySelector('.lead-modal__submit-loading');
@@ -513,7 +663,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const payload = {
                 nome: form.nome.value.trim(),
                 email: form.email.value.trim().toLowerCase(),
-                telefone: form.telefone.value.trim(),
+                telefone: telefoneE164,
+                pais: paisCode,
                 cta_source: pendingSource,
                 page_url: window.location.href,
                 referrer: document.referrer || null,
@@ -559,8 +710,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 350);
         });
 
-        // Captura UTMs assim que carrega
+        // Captura UTMs e pré-seleciona país conforme campanha
         captureUTMs();
+        presetCountryFromUTM();
+        if (paisSelect && telInput) applyCountryToInput();
     })();
 
 });

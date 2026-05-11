@@ -11,11 +11,11 @@ function sha256(value) {
   return crypto.createHash('sha256').update(String(value).trim().toLowerCase()).digest('hex');
 }
 
-function normalizePhone(phone) {
-  if (!phone) return null;
-  const digits = String(phone).replace(/\D/g, '');
-  if (!digits) return null;
-  return digits.startsWith('55') ? digits : '55' + digits;
+// Telefone já chega em E.164 (+5511999998888). Pro Meta CAPI, apenas dígitos.
+function phoneForCapi(phoneE164) {
+  if (!phoneE164) return null;
+  const digits = String(phoneE164).replace(/\D/g, '');
+  return digits || null;
 }
 
 function splitName(full) {
@@ -58,11 +58,11 @@ async function sendCapi(data, clientIp) {
   }
 
   const { first, last } = splitName(data.nome);
-  const phoneNormalized = normalizePhone(data.telefone);
+  const phoneDigits = phoneForCapi(data.telefone);
 
   const userData = {
     em: data.email ? [sha256(data.email)] : undefined,
-    ph: phoneNormalized ? [sha256(phoneNormalized)] : undefined,
+    ph: phoneDigits ? [sha256(phoneDigits)] : undefined,
     fn: first ? [sha256(first)] : undefined,
     ln: last ? [sha256(last)] : undefined,
     client_ip_address: clientIp || undefined,
